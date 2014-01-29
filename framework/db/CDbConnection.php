@@ -359,7 +359,7 @@ class CDbConnection extends CApplicationComponent
 			}
 			catch(PDOException $e)
 			{
-				report_caught_exception($e);
+				//report_caught_exception($e);
 				if(YII_DEBUG)
 				{
 					throw new CDbException(Yii::t('yii','CDbConnection failed to open the DB connection: {error}',

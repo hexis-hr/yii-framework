@@ -194,7 +194,7 @@ class CDbCommand extends CComponent
 			}
 			catch(Exception $e)
 			{
-				report_caught_exception($e);
+				//report_caught_exception($e);
 				Yii::log('Error in preparing SQL: '.$this->getText(),CLogger::LEVEL_ERROR,'system.db.CDbCommand');
                 $errorInfo = $e instanceof PDOException ? $e->errorInfo : null;
 				throw new CDbException(Yii::t('yii','CDbCommand failed to prepare the SQL statement: {error}',
@@ -326,7 +326,7 @@ class CDbCommand extends CComponent
 		}
 		catch(Exception $e)
 		{
-			report_caught_exception($e);
+			//report_caught_exception($e);
 			if($this->_connection->enableProfiling)
 				Yii::endProfile('system.db.CDbCommand.execute('.$this->getText().')','system.db.CDbCommand.execute');
             $errorInfo = $e instanceof PDOException ? $e->errorInfo : null;
@@ -507,7 +507,7 @@ class CDbCommand extends CComponent
 		}
 		catch(Exception $e)
 		{
-			report_caught_exception($e);
+			//report_caught_exception($e);
 			if($this->_connection->enableProfiling)
 				Yii::endProfile('system.db.CDbCommand.query('.$this->getText().$par.')','system.db.CDbCommand.query');
             $errorInfo = $e instanceof PDOException ? $e->errorInfo : null;
