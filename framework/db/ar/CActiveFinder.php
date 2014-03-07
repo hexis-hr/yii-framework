@@ -653,7 +653,15 @@ class CJoinElement
 				$query->joins[]=$element->slave->joinOneMany($fke,$fks,$pke,$parent);
 				$element=$element->slave;
 			}
-			$fks=preg_split('/\s*,\s*/',$element->relation->foreignKey,-1,PREG_SPLIT_NO_EMPTY);
+			if (is_array($element->relation->foreignKey)) {
+                          $fks = array();
+                          foreach ($element->relation->foreignKey as $_fk => $_pk) {
+                            $fks[] = $_fk;
+                            $parent->_table->foreignKeys[$_fk] = array($_fk, $_pk);
+                          }
+			} else {
+                          $fks=preg_split('/\s*,\s*/',$element->relation->foreignKey,-1,PREG_SPLIT_NO_EMPTY);
+                        }
 			$prefix=$element->getColumnPrefix();
 			$params=array();
 			foreach($fks as $i=>$fk)
