@@ -104,9 +104,9 @@ class CFileCache extends CCache
 	protected function getValue($key)
 	{
 		$cacheFile=$this->getCacheFile($key);
-		if(($time=@filemtime($cacheFile))>time())
+		if(is_file($cacheFile) && ($time=@filemtime($cacheFile))>time())
 			return file_get_contents($cacheFile);
-		else if($time>0)
+		else if(is_file($cacheFile) && $time>0)
 			@unlink($cacheFile);
 		return false;
 	}
