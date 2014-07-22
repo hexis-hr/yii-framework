@@ -351,6 +351,9 @@ class CDbCommand extends CComponent
                           echo round($q['time'] * 1000, 2) . 'ms: ' . $q['query'] . "\n\n" .
                             $q['stack'] .
                             "\n\n--------------------------------------------------\n\n";
+
+                        echo "Total time: " . round($GLOBALS['__db_total'] * 1000, 2) . "ms\n\n";
+
                         $output = ob_get_clean();
 
                         file_put_contents($_SERVER['basePath'] . '/queries.txt', $output);
@@ -563,6 +566,9 @@ class CDbCommand extends CComponent
                           echo round($q['time'] * 1000, 2) . 'ms: ' . $q['query'] . "\n\n" .
                             $q['stack'] .
                             "\n\n--------------------------------------------------\n\n";
+
+                        echo "Total time: " . round($GLOBALS['__db_total'] * 1000, 2) . "ms\n\n";
+
                         $output = ob_get_clean();
 
                         file_put_contents($_SERVER['basePath'] . '/queries.txt', $output);
